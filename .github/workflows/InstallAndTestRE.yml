@@ -20,8 +20,6 @@ jobs:
           echo ::set-output name=SOURCE_TAG::${GITHUB_REF##*/}
       - name: Checkout
         uses: actions/checkout@v2
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v1
       - name: Check Docker Version
         run: docker --version
     - name: Install Latest Docker
@@ -30,6 +28,8 @@ jobs:
             sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
             sudo apt-get update
             sudo apt-get install docker-ce
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v1
         with:
