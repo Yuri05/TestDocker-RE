@@ -1,0 +1,25 @@
+name: Install and test RE
+on: 
+  push
+
+jobs:
+  test:
+    strategy:
+        matrix:
+#            r-os: [r3.6.3-centos7, r4.1.0-centos7]
+            r-os: [r3.6.3-centos7]
+    runs-on: ubuntu-latest
+    steps:
+      - name: tag name
+        id: tag_name
+        run: |
+          echo ::set-output name=SOURCE_TAG::${GITHUB_REF##*/}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: .github/workflows/Dockerfile-${{ matrix.r-os }}
+#          tags: docker.pkg.github.com/yuri05/hello-github-actions/base-${{ matrix.r-os }}:${{ steps.tag_name.outputs.SOURCE_TAG}}
+#          load: true
