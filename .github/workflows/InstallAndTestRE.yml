@@ -42,5 +42,7 @@ jobs:
 #          context: .
 #         file: .github/workflows/Dockerfile-${{ matrix.r-os }}
           dockerfile: .github/workflows/Dockerfile-${{ matrix.r-os }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 #          tags: docker.pkg.github.com/yuri05/hello-github-actions/base-${{ matrix.r-os }}:${{ steps.tag_name.outputs.SOURCE_TAG}}
 #          load: true
