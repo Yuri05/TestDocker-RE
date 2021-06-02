@@ -9,6 +9,9 @@ jobs:
 #            r-os: [r3.6.3-centos7, r4.1.0-centos7]
             r-os: [r3.6.3-centos7]
     runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 0
+      COMPOSE_DOCKER_CLI_BUILD: 0
     steps:
       - name: tag name
         id: tag_name
