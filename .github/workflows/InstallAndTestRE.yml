@@ -39,7 +39,8 @@ jobs:
       - name: Build
         uses: docker/build-push-action@v1
         with:
-          context: .
-          file: .github/workflows/Dockerfile-${{ matrix.r-os }}
+#          context: .
+#         file: .github/workflows/Dockerfile-${{ matrix.r-os }}
+          dockerfile: .github/workflows/Dockerfile-${{ matrix.r-os }}
 #          tags: docker.pkg.github.com/yuri05/hello-github-actions/base-${{ matrix.r-os }}:${{ steps.tag_name.outputs.SOURCE_TAG}}
 #          load: true
